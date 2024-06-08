@@ -8,9 +8,10 @@ namespace NotesApp.Application.Contracts.Identity;
 public interface IIdentityRepository
 {
     /// <summary>
-    /// Asynchronously registers a new user in the system.
+    /// Asynchronously creates a new user in the system.
     /// </summary>
     /// <param name="user">The user object containing user details to be registered.</param>
-    /// <returns>A task whose result is auth token.</returns>
-    Task<string> RegisterUserAsync(User user);
+    Task CreateUserAsync(User user);
+
+    Task InsertUserCredsAsync(UserCredentials userCredentials);
 }

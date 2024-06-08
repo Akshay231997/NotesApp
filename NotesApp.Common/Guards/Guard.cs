@@ -39,5 +39,13 @@ public static class Guard
             throw new ArgumentException("can not be empty", paramName);
         }
     }
+
+    public static void GuardAgainstNullEmptyOrWhiteSpace(string paramName, string value)
+    {
+        if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+        {
+            throw new ArgumentException("can not be null, empty or whitespace", paramName);
+        }
+    }
 }
 

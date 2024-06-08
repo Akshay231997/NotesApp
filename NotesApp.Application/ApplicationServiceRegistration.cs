@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NotesApp.Application.Features.Identity.Commands.RegisterUser;
 using NotesApp.Common.Audits;
+using NotesApp.Common.Hashing;
 using System.Reflection;
 
 namespace NotesApp.Application;
@@ -16,6 +17,7 @@ public static class ApplicationServiceRegistration
         services.AddMediatR(x => x.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         services.AddScoped<IValidator<RegisterUserCommand>, RegisterUserValidator>();
         services.AddScoped<IAudit, Audit>();
+        services.AddScoped<IHasher, SHA256Hasher>();
 
         return services;
     }
